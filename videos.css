@@ -1,0 +1,177 @@
+/* 往期节目页 · 视频卡片网格 */
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.video-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brand-bright), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(176,30,51,0.34);
+  background: var(--card-hover);
+}
+
+.video-card:hover::before { opacity: 1; }
+
+.video-num {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--brand-bright);
+  letter-spacing: 0.08em;
+}
+
+.video-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--paper);
+  letter-spacing: 0.01em;
+}
+
+.video-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  color: var(--paper-faint);
+  font-family: var(--font-mono);
+  flex-wrap: wrap;
+}
+
+.video-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.video-cta {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--brand-bright);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.25s ease;
+}
+
+.video-card:hover .video-cta { gap: 10px; }
+
+.video-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--paper-faint);
+  font-family: var(--font-mono);
+  margin-bottom: 22px;
+}
+
+.video-count strong {
+  color: var(--brand-bright);
+  font-size: 17px;
+}
+
+/* 统计说明 */
+.video-note {
+  font-size: 12.5px;
+  color: var(--paper-faint);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  padding-left: 11px;
+  border-left: 2px solid rgba(176,30,51,0.5);
+  margin-bottom: 22px;
+}
+
+/* 分类筛选按钮 */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.filter-btn {
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--paper-faint);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.24s ease;
+}
+
+.filter-btn:hover {
+  color: var(--paper);
+  border-color: rgba(176,30,51,0.4);
+  background: rgba(176,30,51,0.08);
+}
+
+.filter-btn.is-active {
+  color: var(--paper);
+  background: linear-gradient(135deg, rgba(176,30,51,0.32), rgba(176,30,51,0.16));
+  border-color: rgba(176,30,51,0.65);
+}
+
+.filter-btn .cnt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  opacity: 0.7;
+  margin-left: 6px;
+}
+
+/* 分类标签 */
+.video-cat {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 5px;
+  font-family: var(--font-mono);
+}
+
+.video-cat.cat-program {
+  color: #ffd9de;
+  background: rgba(176,30,51,0.42);
+  border: 1px solid rgba(255,120,140,0.34);
+}
+
+.video-cat.cat-doc {
+  color: var(--paper-faint);
+  background: rgba(255,255,255,0.055);
+  border: 1px solid var(--line);
+}
+
+.video-hidden { display: none !important; }

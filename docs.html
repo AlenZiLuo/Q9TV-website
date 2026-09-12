@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>节目制作手册 · 青岛九中校园电视台</title>
+<meta name="description" content="青岛九中校园电视台节目制作操作手册、素材获取、网络配置与设备使用规范。">
+<link rel="icon" type="image/png" href="image/favicon.png">
+<link rel="stylesheet" href="q9tv.css">
+</head>
+<body>
+
+<div class="bg-layer bg-base"></div>
+<div class="bg-layer bg-sweep"></div>
+<div class="bg-layer bg-scan"></div>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img loading="lazy" class="nav-logo" src="image/logo-h-red.png" alt="青岛九中校园电视台">
+  </a>
+  <div class="nav-links">
+    <a class="nav-item" href="index.html">首页</a>
+    <a class="nav-item" href="live.html">直播</a>
+    <a class="nav-item" href="videos.html">往期节目</a>
+  </div>
+</nav>
+
+<main>
+<div class="page-content">
+
+  <div class="page-head">
+    <div class="eyebrow">Documentation</div>
+    <h1>节目制作手册</h1>
+    <p class="lead">
+      校园电视台的内部工作文档。节目怎么做、素材从哪来、设备怎么用，
+      都在这里。
+    </p>
+    <div class="doc-wip">
+      <strong>未完成，待更新</strong>
+      本手册仍在整理中，部分章节内容尚未完善，后续会陆续补充。
+    </div>
+  </div>
+
+  <div class="docs-layout">
+
+    <!-- ============ 侧边栏 ============ -->
+    <aside class="docs-sidebar">
+      <div class="docs-side-title">目录</div>
+      <div class="docs-nav" id="docs-nav">
+        <a href="#sec-1" class="active">一、节目概述</a>
+        <a href="#sec-2">二、素材获取方式</a>
+        <a href="#sec-3">三、剪辑与时长控制</a>
+        <a href="#sec-4">四、网络配置</a>
+        <a href="#sec-5">五、数据备份规范</a>
+        <a href="#sec-6">六、设备使用守则</a>
+      </div>
+    </aside>
+
+    <!-- ============ 正文 ============ -->
+    <div class="docs-body">
+
+      <!-- ---------- 一 ---------- -->
+      <section class="doc-section" id="sec-1">
+        <h2><span class="doc-num">01</span>节目概述</h2>
+
+        <div class="doc-meta">
+          <span>编写人：2025级负责人 李奕鸣</span>
+          <span>适用对象：校园电视台全体成员</span>
+        </div>
+
+        <p class="doc-lead">
+          影音大课堂是校园电视台的常规播放节目，时长约 15 分钟
+          （上下浮动 3 分钟，即 12–18 分钟均可）。播放时间为每周周二和周四。
+        </p>
+
+        <p>节目包含以下三类内容：</p>
+
+        <div class="grid grid-3" style="margin-top:22px;">
+          <div class="glass-card">
+            <span class="tag" style="display:inline-block; margin-bottom:14px;">类型一</span>
+            <h3>新闻合集</h3>
+            <p class="muted" style="margin-top:10px; font-size:14px;">
+              从 CCTV 新闻联播中挑选、剪辑新闻片段合集。<br>
+              <span class="mono" style="color:var(--paper-faint);">素材来源：CCTV（通过 cctvdl 下载）</span>
+            </p>
+          </div>
+          <div class="glass-card">
+            <span class="tag" style="display:inline-block; margin-bottom:14px;">类型二</span>
+            <h3>模范榜样</h3>
+            <p class="muted" style="margin-top:10px; font-size:14px;">
+              展示先进人物事迹的专题节目。<br>
+              <span class="mono" style="color:var(--paper-faint);">素材来源：CCTV 面对面、感动中国等</span>
+            </p>
+          </div>
+          <div class="glass-card">
+            <span class="tag" style="display:inline-block; margin-bottom:14px;">类型三</span>
+            <h3>科普短片</h3>
+            <p class="muted" style="margin-top:10px; font-size:14px;">
+              高质量科普类视频。<br>
+              <span class="mono" style="color:var(--paper-faint);">素材来源：Bilibili 平台</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-divider"></div>
+
+      <!-- ---------- 二 ---------- -->
+      <section class="doc-section" id="sec-2">
+        <h2><span class="doc-num">02</span>素材获取方式</h2>
+
+        <h3>2.1 CCTV 视频下载（新闻合集 / 模范榜样）</h3>
+        <p>
+          使用 <span class="inline-hl">cctvdl</span> 工具进行下载。
+          项目地址：<a class="mono" href="https://github.com/POI-WX/cctvdl" target="_blank" rel="noopener" style="color:var(--brand-bright); word-break:break-all;">https://github.com/POI-WX/cctvdl</a>。
+          详细操作方法请参阅该项目的 README 文档。
+        </p>
+
+        <h4>【新闻合集制作要求】</h4>
+        <ol class="doc-steps">
+          <li>
+            <strong>素材范围：</strong>截取上一次新闻播放日至本次播放日之间所有新闻联播视频。
+          </li>
+          <li>
+            <strong>内容选取标准：</strong>CCTV 正式播出的内容均可选取。注意不重复，确保内容全面、充分、最新。
+          </li>
+          <li>
+            <strong>剪辑逻辑：</strong>按照新闻联播节目的传统编排顺序——国内新闻 → 国际新闻，
+            保持合理的叙事节奏与逻辑连贯性。
+          </li>
+        </ol>
+
+        <h4>【模范榜样制作要求】</h4>
+        <ul class="dot-list">
+          <li>可从 CCTV 下载「面对面」「感动中国」等介绍模范人物的节目。</li>
+          <li>栏目不限于上述两类，可根据实际需要灵活扩展。</li>
+        </ul>
+
+        <h3>2.2 Bilibili 视频下载（科普短片）</h3>
+        <p>使用以下工具从 Bilibili 平台下载视频：</p>
+        <ul class="dot-list">
+          <li><strong>DownKyi（哔哩下载姬）</strong>—— 推荐</li>
+          <li><strong>唧唧Down</strong> —— 备选</li>
+        </ul>
+
+        <h4>【科普短片推荐方向】</h4>
+        <ul class="dot-list">
+          <li>「星球研究所」等高质量地理/人文科普账号</li>
+          <li>其他制作精良、内容准确的科普视频</li>
+        </ul>
+
+        <div class="doc-callout">
+          <strong>注意事项：</strong>Bilibili 视频自带平台水印，无需额外标注来源。
+          确保选取的视频无版权争议风险。
+        </div>
+      </section>
+
+      <div class="page-divider"></div>
+
+      <!-- ---------- 三 ---------- -->
+      <section class="doc-section" id="sec-3">
+        <h2><span class="doc-num">03</span>剪辑与时长控制</h2>
+        <ul class="dot-list">
+          <li><strong>可裁剪：</strong>允许裁掉冗余片段，但不得修改原意。</li>
+          <li><strong>时长不足：</strong>可将多个视频合并为合集。</li>
+          <li><strong>时长超出：</strong>可按内容分为上下集播放。</li>
+          <li><strong>目标时长：</strong>12–18 分钟为宜。</li>
+        </ul>
+      </section>
+
+      <div class="page-divider"></div>
+
+      <!-- ---------- 四 ---------- -->
+      <section class="doc-section" id="sec-4">
+        <h2><span class="doc-num">04</span>校园电视台网络配置</h2>
+
+        <p>
+          校园电视台备有一台网络交换机，通过 RJ45 接口网线连接互联网。
+          使用时需<span class="inline-hl">手动配置网络参数</span>。
+        </p>
+
+        <h3>4.1 网络参数</h3>
+        <table class="doc-table">
+          <thead>
+            <tr><th>项目</th><th>值</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>分配方式</td><td>手动（静态 IP）</td></tr>
+            <tr><td>IPv4 子网前缀长度</td><td class="mono">24（即子网掩码 255.255.255.0）</td></tr>
+            <tr><td>IPv4 网关</td><td class="mono">172.171.53.1</td></tr>
+            <tr><td>IPv4 首选 DNS</td><td class="mono">172.16.2.63</td></tr>
+            <tr><td>IPv4 备选 DNS</td><td class="mono">114.114.114.114</td></tr>
+          </tbody>
+        </table>
+
+        <h3>4.2 设备 IP 地址对照表</h3>
+        <table class="doc-table">
+          <thead>
+            <tr><th>设备</th><th>IP 地址</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>直播机</td><td class="mono">172.171.53.10</td></tr>
+            <tr><td>Suma</td><td class="mono">172.171.53.11</td></tr>
+            <tr><td>Lenovo 笔记本</td><td class="mono">172.171.53.12</td></tr>
+            <tr><td>音频工作站</td><td class="mono">172.171.53.13</td></tr>
+            <tr><td>鸿合大屏</td><td class="mono">172.171.53.14</td></tr>
+          </tbody>
+        </table>
+
+        <h3>4.3 以太网手动设置步骤（Windows）</h3>
+        <ol class="doc-steps">
+          <li>打开 <strong>设置 → 网络和 Internet → 以太网</strong>。</li>
+          <li>点击当前连接的以太网适配器。</li>
+          <li>找到 IP 设置，点击<strong>编辑</strong>。</li>
+          <li>将<strong>自动（DHCP）</strong>切换为<strong>手动</strong>。</li>
+          <li>开启 IPv4，按上表填入对应设备的 IP 地址、子网前缀长度、网关及 DNS。</li>
+          <li>保存并确认连接成功。</li>
+        </ol>
+      </section>
+
+      <div class="page-divider"></div>
+
+      <!-- ---------- 五 ---------- -->
+      <section class="doc-section" id="sec-5">
+        <h2><span class="doc-num">05</span>数据备份规范</h2>
+
+        <p>采用<span class="inline-hl">本地多备份 + 百度网盘云备份</span>的双重备份策略：</p>
+
+        <ul class="dot-list">
+          <li>
+            <strong>本地备份：</strong>建议至少在两个不同的物理存储设备上保存副本
+            （如电脑硬盘 + 移动硬盘/U 盘）。
+          </li>
+          <li>
+            <strong>云端备份：</strong>上传至百度网盘，确保素材和成品均有留存。
+          </li>
+          <li>
+            <strong>每次制作完成后及时备份</strong>，避免数据丢失。
+          </li>
+        </ul>
+
+        <div class="doc-placeholder" style="margin-top:24px;">
+          <strong>待补充</strong>
+          具体备份目录结构及命名规范（DCAST）待后续补充。
+        </div>
+      </section>
+
+      <div class="page-divider"></div>
+
+      <!-- ---------- 六 ---------- -->
+      <section class="doc-section" id="sec-6">
+        <h2><span class="doc-num">06</span>设备使用守则</h2>
+
+        <ol class="doc-steps">
+          <li><strong>爱护设备</strong> —— 轻拿轻放，规范操作。</li>
+          <li><strong>禁止饮食</strong> —— 不携带食品、饮品进入电视台。</li>
+          <li><strong>数据安全</strong> —— 制作完成后及时备份和保存。</li>
+          <li>
+            <strong>离开前检查：</strong>
+            <div class="tag-row" style="margin-top:10px;">
+              <span class="tag tag-plain">关闭电脑</span>
+              <span class="tag tag-plain">关闭相机</span>
+              <span class="tag tag-plain">关闭灯光</span>
+              <span class="tag tag-plain">关闭空调</span>
+              <span class="tag tag-plain">确认门窗关好</span>
+            </div>
+          </li>
+        </ol>
+
+        <div class="doc-placeholder" style="margin-top:26px;">
+          <strong>待补充内容</strong>
+          DCAST 文件分类命名规则、拷贝软件具体说明、备份目录详细结构。<br>
+          如有更新请及时修订本文档。
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="footer-brand">
+    <img loading="lazy" class="footer-logo" src="image/logo-h-red.png" alt="青岛九中校园电视台">
+  </div>
+  <div>
+    <a href="index.html">首页</a>
+    &nbsp;·&nbsp;
+    <a href="live.html">直播</a>
+  </div>
+</footer>
+
+<button class="docs-backtop" id="backtop" aria-label="回到顶部">↑</button>
+
+<script>
+/* ---------- 侧栏高亮 ---------- */
+const navLinks = Array.from(document.querySelectorAll('.docs-nav a'));
+const sections = Array.from(document.querySelectorAll('.doc-section'));
+const backtop = document.getElementById('backtop');
+
+function onScroll() {
+  const y = window.scrollY + 140;
+  let current = sections[0];
+  sections.forEach(sec => { if (sec.offsetTop <= y) current = sec; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+
+  backtop.classList.toggle('show', window.scrollY > 600);
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+backtop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ---------- 平滑跳转（补偿固定导航高度） ---------- */
+navLinks.forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 96;
+    window.scrollTo({ top, behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+  });
+});
+</script>
+
+</body>
+</html>

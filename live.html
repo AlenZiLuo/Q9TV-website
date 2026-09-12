@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>直播 · 青岛九中校园电视台</title>
+<meta name="description" content="青岛九中校园电视台直播入口 — 点击跳转官方直播平台观看节目。">
+<link rel="icon" type="image/png" href="image/favicon.png">
+<link rel="stylesheet" href="q9tv.css">
+</head>
+<body>
+
+<div class="bg-layer bg-base"></div>
+<div class="bg-layer bg-sweep"></div>
+<div class="bg-layer bg-scan"></div>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img loading="lazy" class="nav-logo" src="image/logo-h-red.png" alt="青岛九中校园电视台">
+  </a>
+  <div class="nav-links">
+    <a class="nav-item" href="index.html">首页</a>
+    <a class="nav-item active" href="live.html">直播</a>
+    <a class="nav-item" href="videos.html">往期节目</a>
+  </div>
+</nav>
+
+<main>
+<div class="page-content">
+
+  <!-- ============ 直播主卡 ============ -->
+  <section class="live-hero">
+    <div class="live-pulse">
+      <span class="live-dot"></span>
+      Live Streaming
+    </div>
+    <h1>校园电视台直播</h1>
+    <p class="lead" style="margin:18px auto 0;">
+      节目播出时，点击下方按钮跳转至官方直播平台观看。
+    </p>
+
+    <div class="live-main-card">
+      <div class="live-main-icon">▶</div>
+      <h2>进入直播间</h2>
+      <p class="lead">
+        官方直播平台，节目播出期间可实时观看。
+      </p>
+      <!-- 直播链接已填入 -->
+      <a class="btn-brand" href="http://ke.wxiang.com/liveSharing?1794969302088593410_2097261180710494210_2=" id="live-link" target="_blank" rel="noopener">
+        前往直播平台 <span class="arrow">→</span>
+      </a>
+      <div class="live-note" id="live-note">
+        将在新标签页打开直播页面
+      </div>
+    </div>
+  </section>
+
+  <div class="page-divider"></div>
+
+  <!-- ============ 节目单 ============ -->
+  <section class="section section-fade" id="schedule">
+    <div class="eyebrow">Programme Schedule</div>
+    <h2>节目单</h2>
+    <p class="lead" style="margin-bottom:28px;">
+      《影音大课堂》为校园电视台常规播放节目，每周一至周五均有排播。
+      节目开播前 10 分钟，电视台会先行播放音乐。
+    </p>
+
+    <div class="grid" style="gap:12px;">
+      <div class="schedule-row">
+        <span class="schedule-day">周一</span>
+        <span class="schedule-time">18:20</span>
+        <span class="muted">榜样人物 · 先进人物事迹专题</span>
+      </div>
+      <div class="schedule-row">
+        <span class="schedule-day">周二</span>
+        <span class="schedule-time">18:20</span>
+        <span class="muted">新闻合集 · 国内新闻 → 国际新闻</span>
+      </div>
+      <div class="schedule-row">
+        <span class="schedule-day">周三</span>
+        <span class="schedule-time">18:20</span>
+        <span class="muted">科普短片 / 止于至善 / 遇见礼贤 · 三类内容轮换</span>
+      </div>
+      <div class="schedule-row">
+        <span class="schedule-day">周四</span>
+        <span class="schedule-time">18:20</span>
+        <span class="muted">新闻合集 · 国内新闻 → 国际新闻</span>
+      </div>
+      <div class="schedule-row">
+        <span class="schedule-day">周五</span>
+        <span class="schedule-time">18:20</span>
+        <span class="muted">科普短片 / 止于至善 / 遇见礼贤 · 三类内容轮换</span>
+      </div>
+    </div>
+
+    <div class="doc-callout" style="margin-top:24px;">
+      播出时间以每天 <strong>18:20</strong> 为准。节目开播前 10 分钟，电视台会先行播放音乐。
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="footer-brand">
+    <img loading="lazy" class="footer-logo" src="image/logo-h-red.png" alt="青岛九中校园电视台">
+  </div>
+  <div>
+    <a href="index.html">首页</a>
+    &nbsp;·&nbsp;
+    <a href="docs.html">文档</a>
+  </div>
+</footer>
+
+<script>
+/* ---------- 滚动入场 ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.animationDelay = (i * 0.06) + 's';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.section-fade').forEach(el => io.observe(el));
+
+/* ---------- 直播链接 ---------- */
+(function () {
+  const LIVE_URL = 'http://ke.wxiang.com/liveSharing?1794969302088593410_2097261180710494210_2=';
+  const link = document.getElementById('live-link');
+  const note = document.getElementById('live-note');
+  if (!LIVE_URL) {
+    link.style.opacity = '0.45';
+    link.style.pointerEvents = 'none';
+    link.removeAttribute('target');
+    note.textContent = '直播链接待补充';
+  } else {
+    link.href = LIVE_URL;
+    note.textContent = '将在新标签页打开官方直播平台';
+  }
+})();
+</script>
+
+</body>
+</html>

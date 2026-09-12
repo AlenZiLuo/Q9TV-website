@@ -1,0 +1,18 @@
+# 归档文件（开发过程产物，不部署）
+_archive/
+
+# 本地预览服务器
+serve-site.cjs
+
+# 时间戳缓存
+?v=*
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
