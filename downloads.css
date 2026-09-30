@@ -1,0 +1,272 @@
+/* ============================================================
+   Q9TV · 资源下载页样式
+   依赖 q9tv.css（变量、卡片、按钮、动画）
+   ============================================================ */
+
+/* ---------- 页面更新时间 ---------- */
+.dl-updated-page {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--paper-faint);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-top: 20px;
+}
+
+.dl-updated-page::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--brand-bright);
+  flex-shrink: 0;
+}
+
+.dl-updated-page span { color: var(--paper-dim); }
+
+/* ---------- 汇总行 ---------- */
+.dl-summary {
+  font-size: 13.5px;
+  color: var(--paper-faint);
+  font-family: var(--font-mono);
+  margin-bottom: 26px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(176,30,51,0.55);
+}
+
+.dl-summary strong { color: var(--brand-bright); font-weight: 600; }
+
+/* ---------- 活动分组 ---------- */
+.dl-list {
+  display: grid;
+  gap: 22px;
+}
+
+.dl-group {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.025);
+  overflow: hidden;
+  animation: fadeUp 0.6s ease both;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.dl-group:hover {
+  border-color: rgba(176,30,51,0.28);
+  background: rgba(176,30,51,0.045);
+}
+
+.dl-group-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 22px 26px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(176,30,51,0.10), transparent);
+}
+
+.dl-group-title {
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+}
+
+.dl-group-meta {
+  font-size: 13px;
+  color: var(--paper-faint);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.dl-sep { opacity: 0.5; }
+
+.dl-count {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--brand-bright);
+  border: 1px solid rgba(176,30,51,0.40);
+  background: rgba(176,30,51,0.10);
+  border-radius: 999px;
+  padding: 4px 13px;
+  white-space: nowrap;
+}
+
+/* ---------- 条目行 ---------- */
+.dl-items { display: grid; }
+
+.dl-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 26px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.24s ease;
+}
+
+.dl-item:last-child { border-bottom: none; }
+
+.dl-item:hover { background: rgba(255,255,255,0.035); }
+
+.dl-item-main {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex: 1;
+  min-width: 0;
+}
+
+.dl-item-icon {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 9px;
+  background: rgba(176,30,51,0.14);
+  border: 1px solid rgba(176,30,51,0.36);
+  color: var(--brand-bright);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.24s ease;
+}
+
+.dl-item:hover .dl-item-icon {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+
+.dl-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.dl-item-name {
+  font-size: 15px;
+  color: var(--paper);
+  letter-spacing: 0.01em;
+}
+
+.dl-item-size {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--paper-faint);
+}
+
+/* ---------- 提取码 ---------- */
+.dl-code {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dl-code-label {
+  font-size: 12px;
+  color: var(--paper-faint);
+}
+
+.dl-code-val {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--brand-bright);
+  background: rgba(176,30,51,0.10);
+  border: 1px dashed rgba(176,30,51,0.42);
+  border-radius: 7px;
+  padding: 3px 10px;
+}
+
+.dl-copy {
+  font-size: 12px;
+  font-family: var(--font-cn);
+  color: var(--paper-dim);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  padding: 4px 11px;
+  transition: all 0.22s ease;
+}
+
+.dl-copy:hover {
+  color: var(--brand-bright);
+  border-color: var(--brand-bright);
+}
+
+.dl-copy.is-done {
+  color: #fff;
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.dl-code-none {
+  font-size: 12px;
+  color: var(--paper-faint);
+  font-family: var(--font-mono);
+  opacity: 0.7;
+}
+
+/* ---------- 下载按钮 ---------- */
+.dl-go {
+  flex-shrink: 0;
+  padding: 7px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(176,30,51,0.45);
+  background: rgba(176,30,51,0.10);
+  color: var(--brand-bright);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  transition: all 0.26s ease;
+}
+
+.dl-go:hover {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(176,30,51,0.30);
+}
+
+/* ---------- 空状态 ---------- */
+.dl-empty {
+  border: 1px dashed var(--line-strong);
+  border-radius: 12px;
+  padding: 34px;
+  text-align: center;
+  color: var(--paper-faint);
+  font-size: 14px;
+  background: rgba(255,255,255,0.015);
+}
+
+.dl-empty strong {
+  display: block;
+  color: var(--paper-dim);
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 768px) {
+  .dl-group-head { padding: 18px 18px; }
+  .dl-item {
+    padding: 14px 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .dl-item-main { flex-basis: 100%; }
+  .dl-code { margin-left: 45px; }
+  .dl-go { margin-left: auto; }
+}

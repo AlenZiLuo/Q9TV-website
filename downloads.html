@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>资源下载 · 青岛九中校园电视台</title>
+<meta name="description" content="青岛九中校园电视台活动资源下载 — 运动会、文艺汇演、典礼等活动素材，跳转百度网盘获取。">
+<link rel="icon" type="image/png" href="image/favicon.png">
+<link rel="stylesheet" href="q9tv.css">
+<link rel="stylesheet" href="downloads.css">
+</head>
+<body>
+
+<div class="bg-layer bg-base"></div>
+<div class="bg-layer bg-sweep"></div>
+<div class="bg-layer bg-scan"></div>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img loading="lazy" class="nav-logo" src="image/logo-h-red.png" alt="青岛九中校园电视台">
+  </a>
+  <div class="nav-links">
+    <a class="nav-item" href="index.html">首页</a>
+    <a class="nav-item" href="live.html">直播</a>
+    <a class="nav-item" href="videos.html">往期节目</a>
+    <a class="nav-item active" href="downloads.html">资源下载</a>
+  </div>
+</nav>
+
+<main>
+<div class="page-content">
+
+  <div class="page-head">
+    <div class="eyebrow">Downloads</div>
+    <h1>资源下载</h1>
+    <p class="lead" style="margin-top:16px;">
+      学校活动的完整素材与成片，按活动分类整理。点击条目跳转百度网盘获取，
+      如需提取码请先复制再打开链接。
+    </p>
+    <div class="dl-updated-page" id="dl-updated-page" style="display:none;">最后更新 <span id="dl-updated-val"></span></div>
+  </div>
+
+  <section class="section section-fade" id="downloads">
+    <div class="dl-summary" id="dl-summary">加载中…</div>
+    <div class="dl-list" id="dl-list"></div>
+    <div class="dl-empty" id="dl-empty" style="display:none;">
+      <strong>暂无下载资源</strong>
+      活动素材整理上传后会陆续在此发布。
+    </div>
+  </section>
+
+  <div class="page-divider"></div>
+
+  <section class="section section-fade" id="dl-help">
+    <div class="eyebrow">Notice</div>
+    <h2>下载说明</h2>
+    <div class="glass-card">
+      <div class="feature-list">
+        <div class="feature">
+          <div class="feature-num">01</div>
+          <div>
+            <h3>先复制提取码</h3>
+            <p class="muted">条目右侧的提取码点「复制」按钮即可复制，避免跳转后返回再找。</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-num">02</div>
+          <div>
+            <h3>跳转百度网盘</h3>
+            <p class="muted">点击条目本身在新标签页打开分享页，粘贴提取码后即可转存或下载。</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-num">03</div>
+          <div>
+            <h3>链接失效怎么办</h3>
+            <p class="muted">网盘链接可能因分享策略失效，遇到无法访问可联系电视台重新获取。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="footer-brand">
+    <img loading="lazy" class="footer-logo" src="image/logo-h-red.png" alt="青岛九中校园电视台">
+  </div>
+  <div>
+    <a href="https://space.bilibili.com/522963024" target="_blank" rel="noopener">哔哩哔哩</a>
+  </div>
+</footer>
+
+<script>
+/* ---------- 滚动入场 ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.animationDelay = (i * 0.06) + 's';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.section-fade').forEach(el => io.observe(el));
+
+/* ---------- 资源下载渲染 ---------- */
+(function () {
+  const listEl = document.getElementById('dl-list');
+  const sumEl = document.getElementById('dl-summary');
+  const emptyEl = document.getElementById('dl-empty');
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function render(data) {
+    const acts = Array.isArray(data) ? data : (data && data.activities) || [];
+    const updated = (data && data.updated) || null;
+
+    if (!Array.isArray(acts) || acts.length === 0) {
+      emptyEl.style.display = '';
+      sumEl.textContent = '';
+      return;
+    }
+
+    const totalItems = acts.reduce((n, a) => n + ((a.items && a.items.length) || 0), 0);
+    sumEl.innerHTML = '共 <strong>' + acts.length + '</strong> 场活动 · <strong>' + totalItems + '</strong> 个文件';
+
+    const pageUpd = document.getElementById('dl-updated-page');
+    const pageUpdVal = document.getElementById('dl-updated-val');
+    if (updated) {
+      pageUpdVal.textContent = updated;
+      pageUpd.style.display = '';
+    } else {
+      pageUpd.style.display = 'none';
+    }
+
+    let html = '';
+    acts.forEach((act, ai) => {
+      const items = act.items || [];
+      html += '<article class="dl-group" style="animation-delay:' + (ai * 0.06) + 's">';
+      html += '  <header class="dl-group-head">';
+      html += '    <div>';
+      html += '      <h2 class="dl-group-title">' + esc(act.activity) + '</h2>';
+      if (act.date || act.note) {
+        html += '      <div class="dl-group-meta">';
+        if (act.date) html += '<span>' + esc(act.date) + '</span>';
+        if (act.date && act.note) html += '<span class="dl-sep">·</span>';
+        if (act.note) html += '<span>' + esc(act.note) + '</span>';
+        html += '      </div>';
+      }
+      html += '    </div>';
+      html += '    <span class="dl-count">' + items.length + ' 个文件</span>';
+      html += '  </header>';
+      html += '  <div class="dl-items">';
+
+      items.forEach((it) => {
+        html += '    <div class="dl-item">';
+        html += '      <a class="dl-item-main" href="' + esc(it.url) + '" target="_blank" rel="noopener">';
+        html += '        <span class="dl-item-icon">↓</span>';
+        html += '        <span class="dl-item-text">';
+        html += '          <span class="dl-item-name">' + esc(it.name) + '</span>';
+        if (it.size) html += '          <span class="dl-item-size">' + esc(it.size) + '</span>';
+        html += '        </span>';
+        html += '      </a>';
+        if (it.code) {
+          html += '      <div class="dl-code">';
+          html += '        <span class="dl-code-label">提取码</span>';
+          html += '        <span class="dl-code-val">' + esc(it.code) + '</span>';
+          html += '        <button class="dl-copy" type="button" data-code="' + esc(it.code) + '">复制</button>';
+          html += '      </div>';
+        } else {
+          html += '      <div class="dl-code dl-code-none">无需提取码</div>';
+        }
+        html += '      <a class="dl-go" href="' + esc(it.url) + '" target="_blank" rel="noopener">';
+        html += '        下载';
+        html += '      </a>';
+        html += '    </div>';
+      });
+
+      html += '  </div>';
+      html += '</article>';
+    });
+
+    listEl.innerHTML = html;
+
+    listEl.querySelectorAll('.dl-copy').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const code = btn.dataset.code || '';
+        const done = () => {
+          const old = btn.textContent;
+          btn.textContent = '已复制';
+          btn.classList.add('is-done');
+          setTimeout(() => { btn.textContent = old; btn.classList.remove('is-done'); }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code).then(done).catch(() => fallback(code, done));
+        } else {
+          fallback(code, done);
+        }
+      });
+    });
+  }
+
+  function fallback(text, done) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { /* ignore */ }
+    document.body.removeChild(ta);
+  }
+
+  fetch('data/downloads.json', { cache: 'no-cache' })
+    .then((r) => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(render)
+    .catch(() => {
+      sumEl.textContent = '';
+      emptyEl.style.display = '';
+      emptyEl.querySelector('strong').textContent = '资源列表加载失败';
+    });
+})();
+</script>
+
+</body>
+</html>
