@@ -3,6 +3,55 @@
    依赖 q9tv.css（变量、卡片、按钮、动画）
    ============================================================ */
 
+/* ---------- 说明导语 ---------- */
+.dl-notice {
+  border-left: 2px solid var(--brand);
+  background: rgba(176,30,51,0.05);
+  border-radius: 0 8px 8px 0;
+  padding: 11px 16px;
+  margin-bottom: 18px;
+}
+
+.dl-notice p {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--paper-faint);
+  margin: 0;
+}
+
+.dl-notice strong { color: var(--brand-bright); font-weight: 600; }
+
+/* ---------- 下载说明 ---------- */
+.dl-help-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.dl-help-head .eyebrow { margin-bottom: 0; }
+
+/* 步骤列表紧凑化 */
+.dl-help .feature-list { gap: 15px; }
+
+.dl-help .feature { gap: 13px; }
+
+.dl-help .feature-num {
+  width: 26px; height: 26px;
+  font-size: 11px;
+  border-radius: 7px;
+}
+
+.dl-help .feature h3 {
+  font-size: 14.5px;
+  margin-bottom: 3px;
+}
+
+.dl-help .feature .muted {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
 /* ---------- 页面更新时间 ---------- */
 .dl-updated-page {
   display: inline-flex;
@@ -107,8 +156,9 @@
 .dl-item {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 26px;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 26px;
   border-bottom: 1px solid rgba(255,255,255,0.05);
   transition: background 0.24s ease;
 }
@@ -117,12 +167,21 @@
 
 .dl-item:hover { background: rgba(255,255,255,0.035); }
 
-.dl-item-main {
+/* 左侧：图标 + 文件名 */
+.dl-item-info {
   display: flex;
   align-items: center;
   gap: 13px;
   flex: 1;
   min-width: 0;
+}
+
+/* 右侧：提取码 + 下载按钮 */
+.dl-item-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .dl-item-icon {
@@ -143,13 +202,6 @@
   background: var(--brand);
   border-color: var(--brand);
   color: #fff;
-}
-
-.dl-item-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
 }
 
 .dl-item-name {
@@ -190,20 +242,25 @@
 }
 
 .dl-copy {
-  font-size: 12px;
+  font-size: 12.5px;
   font-family: var(--font-cn);
   color: var(--paper-dim);
   background: transparent;
   border: 1px solid var(--line-strong);
-  border-radius: 7px;
-  padding: 4px 11px;
+  border-radius: 8px;
+  padding: 6px 14px;
+  white-space: nowrap;
+  cursor: pointer;
   transition: all 0.22s ease;
 }
 
 .dl-copy:hover {
   color: var(--brand-bright);
   border-color: var(--brand-bright);
+  background: rgba(176,30,51,0.10);
 }
+
+.dl-copy:active { transform: scale(0.96); }
 
 .dl-copy.is-done {
   color: #fff;
@@ -216,6 +273,30 @@
   color: var(--paper-faint);
   font-family: var(--font-mono);
   opacity: 0.7;
+}
+
+/* ---------- 轻提示 ---------- */
+.dl-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 42px;
+  transform: translate(-50%, 18px);
+  z-index: 200;
+  padding: 11px 22px;
+  border-radius: 999px;
+  background: rgba(176,30,51,0.96);
+  color: #fff;
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 12px 34px rgba(0,0,0,0.42);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.dl-toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 /* ---------- 下载按钮 ---------- */
@@ -240,6 +321,37 @@
   box-shadow: 0 8px 22px rgba(176,30,51,0.30);
 }
 
+/* ---------- 复制下载链接按钮 ---------- */
+.dl-link {
+  flex-shrink: 0;
+  padding: 7px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--paper-dim);
+  font-size: 13px;
+  font-family: var(--font-cn);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.26s ease;
+}
+
+.dl-link:hover {
+  color: var(--brand-bright);
+  border-color: var(--brand-bright);
+  background: rgba(176,30,51,0.10);
+}
+
+.dl-link:active { transform: scale(0.97); }
+
+.dl-link.is-done {
+  color: #fff;
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
 /* ---------- 空状态 ---------- */
 .dl-empty {
   border: 1px dashed var(--line-strong);
@@ -262,11 +374,21 @@
 @media (max-width: 768px) {
   .dl-group-head { padding: 18px 18px; }
   .dl-item {
-    padding: 14px 16px;
-    flex-wrap: wrap;
+    padding: 15px 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .dl-item-actions {
+    justify-content: space-between;
     gap: 10px;
   }
-  .dl-item-main { flex-basis: 100%; }
-  .dl-code { margin-left: 45px; }
+  .dl-code { margin-left: 0; }
   .dl-go { margin-left: auto; }
+}
+
+@media (max-width: 480px) {
+  .dl-item-actions { flex-wrap: wrap; }
+  .dl-code { flex-basis: 100%; }
+  .dl-go, .dl-link { flex: 1; text-align: center; }
 }

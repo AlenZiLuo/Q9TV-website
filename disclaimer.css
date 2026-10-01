@@ -1,0 +1,56 @@
+/* ============================================================
+   Q9TV · 站点免责声明
+   依赖 q9tv.css，放在页脚之前
+   ============================================================ */
+
+.disclaimer {
+  border-top: 1px solid var(--line);
+  padding: 30px 6% 34px;
+  background: rgba(16,5,7,0.55);
+}
+
+.disclaimer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  border: 1px solid rgba(176,30,51,0.24);
+  border-left: 3px solid var(--brand);
+  border-radius: 12px;
+  background: rgba(176,30,51,0.055);
+  padding: 20px 26px;
+}
+
+.disclaimer-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--brand-bright);
+  margin-bottom: 11px;
+}
+
+.disclaimer-title::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--brand-bright);
+  flex-shrink: 0;
+}
+
+.disclaimer p {
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--paper-faint);
+  margin-bottom: 8px;
+}
+
+.disclaimer p:last-child { margin-bottom: 0; }
+
+.disclaimer strong { color: var(--paper-dim); font-weight: 600; }
+
+@media (max-width: 768px) {
+  .disclaimer { padding: 22px 5% 26px; }
+  .disclaimer-inner { padding: 16px 18px; }
+  .disclaimer p { font-size: 12.5px; }
+}
